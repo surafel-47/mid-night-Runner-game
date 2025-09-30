@@ -1,0 +1,301 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+
+}
+
+
+
+.muteBtn {
+  position: absolute;
+  z-index: 2000;
+  top: 20px;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: rgba(49, 0, 0, 0.313);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreHeaderDiv {
+  position: absolute;
+  top: 0;
+  z-index: 500;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  height: 150px;
+  background-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.643),
+      rgba(255, 255, 255, 0));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.title {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color: wheat;
+  margin-bottom: 10px;
+  background-image: url(./assets/logoSmall.png);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  width: 350px;
+  background-position: -0px +0px;
+}
+
+.scoreDisplay {
+  height: 200px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.highestScore {
+  font-size: 24px;
+  color: #4d4d4d;
+}
+
+
+
+
+
+
+
+
+
+.playAreaContainer {
+  position: relative;
+  background-color: rgba(115, 32, 32, 0.224);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1px;
+}
+
+
+
+
+
+.parallax-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Adjust height as needed */
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+}
+
+
+
+/* .parallax-layer {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+} */
+
+
+
+
+#layer1 {
+  position: absolute;
+  width: 500%;
+  height:100%;
+  left: 0;
+  bottom: 140px;
+  background-size: 20% 100%;
+  background-repeat: repeat-x;
+  background-image: url('assets/layer1.jpg');
+  filter: blur(2px);
+  /* animation: parallax 150s linear infinite; */
+}
+
+
+
+
+
+
+#layer2 {
+  position: absolute;
+  width: 500%;
+  height: 70%;
+  left: -10px;
+  bottom: -10px;
+  background-size: 20% 100%;
+  background-repeat: repeat-x;
+  background-image: url('assets/layer2.png');
+  animation: parallax 150s linear infinite;
+  filter: blur(0.7px);
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+#layer3 {
+  position: absolute;
+  width: 500%;
+  height: 23%;
+  left: 0;
+  bottom: 0;
+  background-size: 20% 100%;
+  background-repeat: repeat-x;
+  background-image: url('assets/floor.png');
+  animation: parallax 5s linear infinite;
+}
+
+
+
+@keyframes parallax {
+
+  100% {
+    transform: translateX(-3400px);
+  }
+}
+
+
+
+
+
+
+
+#player {
+  width: 200px;
+  /* Adjust the width according to your sprite size */
+  height: 200px;
+  /* Adjust the height according to your sprite size */
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-color: rgba(63, 63, 63, 0.228); */
+  position: absolute;
+  border-radius: 25px;
+}
+
+#playerCollusionArea {
+  width: 70px;
+  height: 140px;
+  /* background-color: rgba(103, 103, 103, 0.27); */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.zoomed {
+  transform: scale(1.05); /* Adjust zoom level */
+}
+
+
+
+.obstacle {
+  position: absolute;
+}
+
+.obstacle.hyena  {
+  width: 120px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-color: rgba(211, 144, 144, 0.633); */
+  background-image: url('assets/heyna.png'); 
+
+}
+
+.obstacle.wolf {
+  height: 100px;
+  width: 150px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* background-color: rgba(0, 0, 0, 0.449); */
+  background-image: url('assets/wolf.png');
+}
+
+
+
+
+
+
+
+
+
+
+
+.gameOverDiv {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0000006b;
+  z-index: 2000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+
+.restart {
+  animation: glow 0.5s infinite alternate;
+  /* Make the restart text glow */
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #000000, 0 0 20px #00fff2, 0 0 30px #00fff2;
+    /* Shadow effect */
+  }
+
+  to {
+    text-shadow: 0 0 20px #ffffff, 0 0 30px #00fff2, 0 0 60px #00fff2;
+    /* Glow effect */
+  }
+}
+
+.gameOverDiv>div {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gameOverDiv .logo img {
+  width: 400px;
+}
+
+.gameOver {
+  font-size: 55px;
+}
+
+.yourScore {
+  font-size: 25px;
+  /* Adjust font size as needed */
+  margin-bottom: 10px;
+  /* Add margin bottom for spacing */
+}
+
+.restart {
+  font-size: 25px;
+  /* Adjust font size as needed */
+}
